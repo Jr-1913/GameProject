@@ -52,22 +52,6 @@ public class Artist {
 				glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		}//EoM
 
-		public static void DrawQuad(float x, float y, float width, float height){
-			/****************************************************
-			 Begin starting a line or other shape like quad(square), 
-			 two param (beginning of line and the ending)) 
-			 (0,0) is in the top left of window
-			 2f means 2 floats
-			******************************************************/	
-			//square
-			glBegin(GL_QUADS);
-			glVertex2f(x, y);//Top left corner
-			glVertex2f(x + width, y);//Top right corner
-			glVertex2f(x + width, y + height);//Bottom right corner
-			glVertex2f(x, y + height);//Bottom left corner
-			glEnd();//ending of the shape
-		}//EoM
-		
 		/******************************************************
 		 Method used for drawing quad's textures to the window
 		 same as method above but a little different. Instead of global x,y cordinates(the entire windows cord) 

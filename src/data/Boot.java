@@ -22,7 +22,7 @@ import helpers.Clock;
 
 public class Boot {
 	public Boot() {
-
+		Audio frogmusic = new Audio();
 		BeginSession();
 
 		// Since our map is 20x15 we must create each index for it
@@ -47,88 +47,89 @@ public class Boot {
 
 		// Small Log
 		Enemy e1 = new Enemy(QuickLoad("dirt"), grid.GetTile(0, 5), 64, 64, 20);// 5
-																				// is
-																				// the
-																				// speed
+		// is
+		// the
+		// speed
 		Enemy e2 = new Enemy(QuickLoad("dirt"), grid.GetTile(1, 5), 64, 64, 20);// 5
-																				// is
-																				// the
-																				// speed
+		// is
+		// the
+		// speed
 		Enemy e3 = new Enemy(QuickLoad("dirt"), grid.GetTile(2, 5), 64, 64, 20);// 5
-																				// is
-																				// the
-																				// speed
+		// is
+		// the
+		// speed
 
 		// Long Log
 		Enemy e5 = new Enemy(QuickLoad("dirt"), grid.GetTile(0, 3), 64, 64, 30);// 5
-																				// is
-																				// the
-																				// speed
+		// is
+		// the
+		// speed
 		Enemy e6 = new Enemy(QuickLoad("dirt"), grid.GetTile(1, 3), 64, 64, 30);// 5
-																				// is
-																				// the
-																				// speed
+		// is
+		// the
+		// speed
 		Enemy e7 = new Enemy(QuickLoad("dirt"), grid.GetTile(2, 3), 64, 64, 30);// 5
-																				// is
-																				// the
-																				// speed
+		// is
+		// the
+		// speed
 		Enemy e8 = new Enemy(QuickLoad("dirt"), grid.GetTile(3, 3), 64, 64, 30);// 5
-																				// is
-																				// the
-																				// speed
+		// is
+		// the
+		// speed
 		Enemy e9 = new Enemy(QuickLoad("dirt"), grid.GetTile(4, 3), 64, 64, 30);// 5
-																				// is
-																				// the
-																				// speed
+		// is
+		// the
+		// speed
 
 		// Turtles
 		Enemy e4 = new Enemy(QuickLoad("turtle"), grid.GetTile(0, 6), 64, 64, 15);// 5
-																					// is
-																					// the
-																					// speed
+		// is
+		// the
+		// speed
 		Enemy e00 = new Enemy(QuickLoad("turtle"), grid.GetTile(0, 4), 64, 64, 35);// 5
-																					// is
-																					// the
-																					// speed
+		// is
+		// the
+		// speed
 		Enemy e01 = new Enemy(QuickLoad("turtle"), grid.GetTile(0, 2), 64, 64, 45);// 5
-																					// is
-																					// the
-																					// speed
+		// is
+		// the
+		// speed
 
 		// Small Log Waves
 		Wave wave1 = new Wave(15, e1);// 10 is how milliseconds till another
-										// enemy spawns
+		// enemy spawns
 		Wave wave2 = new Wave(15, e2);// 10 is how milliseconds till another
-										// enemy spawns
+		// enemy spawns
 		Wave wave3 = new Wave(15, e3);// 10 is how milliseconds till another
-										// enemy spawns
+		// enemy spawns
 
 		// Turtle Waves
 		Wave wave4 = new Wave(13, e4);// 10 is how milliseconds till another
-										// enemy spawns
+		// enemy spawns
 		Wave wave00 = new Wave(13, e00);// 10 is how milliseconds till another
-										// enemy spawns
+		// enemy spawns
 		Wave wave01 = new Wave(5, e01);// 10 is how milliseconds till another
-										// enemy spawns
+		// enemy spawns
 
 		// Long Log wave
 		Wave wave5 = new Wave(15, e5);// 10 is how milliseconds till another
-										// enemy spawns
+		// enemy spawns
 		Wave wave6 = new Wave(15, e6);// 10 is how milliseconds till another
-										// enemy spawns
+		// enemy spawns
 		Wave wave7 = new Wave(15, e7);// 10 is how milliseconds till another
-										// enemy spawns
+		// enemy spawns
 		Wave wave8 = new Wave(15, e8);// 10 is how milliseconds till another
-										// enemy spawns
+		// enemy spawns
 		Wave wave9 = new Wave(15, e9);// 10 is how milliseconds till another
-										// enemy spawns
+		// enemy spawns
 
 		CoinGenerator c = new CoinGenerator(QuickLoad("coin"),grid.GetTile(0, 0), 64, 64);
 		cgWave wavec = new cgWave(5000, c);
-		
+
 		while (!Display.isCloseRequested()) {// While were not hitting the x
-							// button
+			// button
 			Clock.update();
+			Audio.makeAudio();
 
 			grid.Draw();// Draw the grid
 			wave1.Update();// Update the waves
@@ -151,7 +152,7 @@ public class Boot {
 	}// End of boot constructor
 
 	public static void main(String[] args) {
-		
+
 		JFrame frame = new JFrame("LEAGUE OF FROGGER");
 		frame.setVisible(true);
 		frame.setSize(800, 800);
@@ -178,14 +179,14 @@ public class Boot {
 		panel.add(button2);
 		button2.setPreferredSize(new Dimension(200, 100));
 		button2.addActionListener(new Action2());// note the button2 here
-													// instead of button
+		// instead of button
 
 		// Create the button/listener for #3
 		JButton button3 = new JButton("Instructions");
 		panel.add(button3);
 		button3.setPreferredSize(new Dimension(200, 100));
 		button3.addActionListener(new Action3());// note the button3 here instead of button
-		
+
 	}// End of main method
 
 	// Action that is performed for button#1
