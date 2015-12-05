@@ -21,8 +21,11 @@ import org.lwjgl.opengl.Display;
 import helpers.Clock;
 
 public class Boot {
+	
+	public static Audio frogmusic;
+	
 	public Boot() {
-		Audio frogmusic = new Audio();
+
 		BeginSession();
 
 		// Since our map is 20x15 we must create each index for it
@@ -125,12 +128,10 @@ public class Boot {
 
 		CoinGenerator c = new CoinGenerator(QuickLoad("coin"),grid.GetTile(0, 0), 64, 64);
 		cgWave wavec = new cgWave(5000, c);
-
+		frogmusic = new Audio();
 		while (!Display.isCloseRequested()) {// While were not hitting the x
 			// button
 			Clock.update();
-			Audio.makeAudio();
-
 			grid.Draw();// Draw the grid
 			wave1.Update();// Update the waves
 			wave2.Update();// Update the waves
@@ -148,11 +149,11 @@ public class Boot {
 			Display.update();
 			Display.sync(80);
 		}
-		Display.destroy();
+		frogmusic.stop();
+		Display.destroy();	
 	}// End of boot constructor
 
 	public static void main(String[] args) {
-
 		JFrame frame = new JFrame("LEAGUE OF FROGGER");
 		frame.setVisible(true);
 		frame.setSize(800, 800);
